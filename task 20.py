@@ -1,7 +1,7 @@
 # *Задача 20: * В настольной игре Скрабл (Scrabble) каждая буква имеет определенную ценность. 
 # В случае с английским алфавитом очки распределяются так:A, E, I, O, U, L, N, S, T, R – 1 очко;
 #  D, G – 2 очка; B, C, M, P – 3 очка; F, H, V, W, Y – 4 очка; K – 5 очков; J, X – 8 очков; 
-# Q, Z – 10 очков. А русские буквы оцениваются так: А, В, Е, И, Н, О, Р, С, Т – 1 очко;
+#  очков. А русские буквы оцениваются так: А, В, Е, И, Н, О, Р, С, Т – 1 очко;
 #  Д, К, Л, М, П, У – 2 очка; Б, Г, Ё, Ь, Я – 3 очка; Й, Ы – 4 очка; Ж, З, Х, Ц, Ч – 5 очков;
 #  Ш, Э, Ю – 8 очков; Ф, Щ, Ъ – 10 очков. 
 # Напишите программу, которая вычисляет стоимость введенного пользователем слова. 
@@ -13,14 +13,25 @@
 # ноутбук
 #     12
 
-dictionary = {'AEIOULNSTR': 1, 'DG': 2, 'BCMP':3, 'FHVWY': 4, 'K':5, 'JX':8,} 
+dictionary_eng = {'AEIOULNSTR': 1, 'DG': 2, 'BCMP':3, 'FHVWY': 4, 'K':5, 'JX':8, 'QZ':10} 
+dictionary_rus = {'АВЕИНОРСТ': 1, 'ДКЛМПУ': 2, 'БГЁЬЯ':3, 'ЙЫ': 4, 'ЖЗХЦЧ':5, 'ШЭЮ':8,'ФЩЪ':10} 
+
+eng = 'abcdefghijklmnopqrstuvwxyz'
+rus = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя'
 
 a=input("Введите слово ").upper()
 sum=0
-for i in range(len(a)):
-   for keys, values in dictionary.items():
-    for t in keys:
-        if a[i] == t:
-           sum+=values
+if a[0].lower() in eng:
+   for i in range(len(a)):
+      for keys, values in dictionary_eng.items():
+         for t in keys:
+            if a[i] == t:
+               sum+=values
+else:
+   for i in range(len(a)):
+      for keys, values in dictionary_rus.items():
+         for t in keys:
+            if a[i] == t:
+               sum+=values
 
 print(f"стоимость введенного пользователем слова -> {sum}")
