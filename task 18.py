@@ -22,9 +22,6 @@ b=int(input("Укажите к какому числу ищим приблежо
 temp=list_1[0]
 dif=abs(list_1[0]-b)
 for i in range(a):
-    # if list_1[i]==b:
-    #     temp=list_1[i]
-    #     break
     if abs(list_1[i]-b)<dif:
         dif=abs(list_1[i]-b)
         temp=list_1[i]
